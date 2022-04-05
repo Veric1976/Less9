@@ -1,5 +1,7 @@
 package Veric.SkyPro.Less9;
 
+import java.util.Objects;
+
 public class Book {
     private String nameBook;
     private Author authorBook;
@@ -34,4 +36,24 @@ public class Book {
         System.out.println("this.yearPublishingBook = " + this.yearPublishingBook);
     }
 
+    @Override
+    public String toString() {
+        return "Book: \"" +
+                nameBook + '\"' + ' ' +
+                authorBook.toString() +
+                " Year publishing: " + yearPublishingBook;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+        Book book = (Book) o;
+        return yearPublishingBook == book.yearPublishingBook && nameBook.equals(book.nameBook) && authorBook.equals(book.authorBook);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameBook, authorBook, yearPublishingBook);
+    }
 }
